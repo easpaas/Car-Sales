@@ -1,3 +1,5 @@
+import { ADD_FEATURE } from "../actions";
+
 export const initialState = {
   additionalPrice: 0,
   car: {
@@ -16,20 +18,32 @@ export const initialState = {
 };
 
 export const Reducer = (state = initialState, action) => {
-  switch (action.type){
-    case 'ADD_FEATURE': 
+  switch (action.type) {
+    case ADD_FEATURE: 
       console.log(action.payload)
       return {
-        // ...state, 
-        // cars: [
-        //   ...state.cars.features, 
-        //   action.payload.feature
-        // ]
+        ...state, 
+        // additionalPrice: action.payload.price + action.payload.feature.price,
+        car: {
+          ...state.car, 
+          features: [
+            ...state.car.features,
+            action.payload
+          ]
+        }
       }
-      break;
-    case 'REMOVE_FEATURE':
-      console.log(`inside ${action.type}`)
-      break;
+    // case 'REMOVE_FEATURE':
+    //   return {
+    //     ...state,
+    //     additionalPrice: action.payload.price - action.payload.features.price,
+    //     car: {
+    //       ...state.car,
+    //       features: [
+    //         ...state.car.features,
+    //         action.payload.feature
+    //       ]
+    //     }
+    //   }
     default:
       return state;
   }
