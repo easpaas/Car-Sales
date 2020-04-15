@@ -39,8 +39,7 @@ export const Reducer = (state = initialState, action) => {
           ...state.car,
           features: 
             state.car.features.filter(item => 
-              console.log(item)
-              //  TODO remove clicked item from features array
+              item.id !== action.payload.id
             )
         }
       }
