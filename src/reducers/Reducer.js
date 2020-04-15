@@ -32,16 +32,15 @@ export const Reducer = (state = initialState, action) => {
         }
       }
     case REMOVE_FEATURE:
-      // console.log(action.payload) == 4
       return {
         ...state,
-        additionalPrice: action.payload.price - state.additionalPrice,
+        additionalPrice: state.additionalPrice - action.payload.price,
         car: {
           ...state.car,
-          features: // TODO filter returns new array
+          features: 
             state.car.features.filter(item => 
               console.log(item)
-              //  TODO remove item from features array
+              //  TODO remove clicked item from features array
             )
         }
       }
